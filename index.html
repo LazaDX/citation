@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citation Royale - Radama I</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            height: 100%;
+            overflow: auto;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: #0a0a0a;
+            color: #e0d6c1;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%23392c1d" width="100" height="100"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%2359462d" stroke-width="1"/></svg>');
+            opacity: 0.2;
+            z-index: -2;
+        }
+        
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><rect fill="%23110e0a" width="1200" height="800"/><path d="M600,200 C800,100 1000,200 1000,400 C1000,600 800,700 600,600 C400,700 200,600 200,400 C200,200 400,100 600,200 Z" fill="none" stroke="%23453924" stroke-width="10" opacity="0.3"/><path d="M600,250 C750,170 900,220 900,400 C900,580 750,650 600,550 C450,650 300,580 300,400 C300,220 450,170 600,250 Z" fill="none" stroke="%23453924" stroke-width="8" opacity="0.2"/></svg>');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 900px;
+            padding: 3rem;
+            background: rgba(20, 16, 11, 0.85);
+            border: 2px solid #a98f5a;
+            box-shadow: 0 0 30px rgba(150, 120, 50, 0.2),
+                        inset 0 0 50px rgba(0, 0, 0, 0.4);
+            border-radius: 5px;
+            position: relative;
+            margin: 4rem 2rem;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 1px solid rgba(169, 143, 90, 0.3);
+            pointer-events: none;
+        }
+        
+        .royal-seal {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background: #0a0a0a;
+            border: 2px solid #a98f5a;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(150, 120, 50, 0.4);
+        }
+        
+        .royal-seal::before {
+            content: '♔';
+            font-size: 3rem;
+            color: #a98f5a;
+        }
+        
+        h1 {
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            color: #d4b668;
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            letter-spacing: 1px;
+        }
+        
+        .quote {
+            font-size: 1.6rem;
+            line-height: 1.6;
+            text-align: justify;
+            margin-bottom: 2rem;
+            position: relative;
+            padding: 0 1rem;
+        }
+        
+        .quote::before,
+        .quote::after {
+            content: '"';
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: #a98f5a;
+            position: absolute;
+            opacity: 0.7;
+        }
+        
+        .quote::before {
+            top: -20px;
+            left: -10px;
+        }
+        
+        .quote::after {
+            bottom: -40px;
+            right: -10px;
+        }
+        
+        .author {
+            text-align: right;
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: #d4b668;
+            margin-top: 2rem;
+            padding-right: 2rem;
+        }
+        
+        .typewriter {
+            border-right: 3px solid rgba(169, 143, 90, 0.8);
+            white-space: nowrap;
+            overflow: hidden;
+            animation: blink-caret 0.8s step-end infinite;
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: rgba(169, 143, 90, 0.8); }
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 2.5rem;
+            font-size: 0.9rem;
+            color: #8a7a5c;
+        }
+        
+        .copyright {
+            position: fixed;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #8a7a5c;
+            padding: 5px;
+            background: rgba(20, 16, 11, 0.7);
+            z-index: 10;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.5rem;
+                margin: 3rem 1rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .quote {
+                font-size: 1.3rem;
+            }
+            
+            .author {
+                font-size: 1.2rem;
+            }
+            
+            .royal-seal {
+                width: 80px;
+                height: 80px;
+                top: -40px;
+            }
+            
+            .royal-seal::before {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-image"></div>
+    
+    <div class="container">
+        <div class="royal-seal"></div>
+        
+        <h1>
+Fanambaran'i Mpanjaka</h1>
+        
+        <div class="quote" id="typewriter">
+            <!-- Le texte sera ajouté dynamiquement par JavaScript -->
+        </div>
+        
+        <div class="author">- Radama I</div>
+        
+        <div class="footer">Fandovana ny fiandrianana Malagasy</div>
+    </div>
+
+    <div class="copyright">© Laza</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const text = `Ry oloko, ry taranak’i Madagasikara, henoy ny teniko.
+Tsy ny fahavalo avy any ivelany no loza lehibe indrindra ho antsika, fa ny kere no tena fahavalo mandripaka.
+Fa raha mosarena ny vahoaka, tsy hahavita mieritreritra ny Fanjakana;
+ny lehibe hiezaka handevona ny kely, ary ny madinika kosa hangalatra sy hanao ratsy.
+
+Ka raha misy aminareo mandà ny asa sy tsy mikarakara ny tany,
+dia lazaiko aminareo oloko: tongava, ary ianareo no ambolena amin’ireo taniny.
+Hihinana ny vokatra ianareo, fa rehefa tonga saina sy vonona izy ireo hiasa indray,
+dia avereno aminy ny taniny, satria ny asa no fiainan’ny Fanjakana,
+ary ny vokatra no fiandrianan’ny mpanjaka sy ny vahoaka iray manontolo.`;
+            
+            const typewriterElement = document.getElementById('typewriter');
+            let i = 0;
+            let speed = 50;
+            function typeWriter() {
+                if (i < text.length) {
+                    typewriterElement.innerHTML += text.charAt(i);
+                    if (text.charAt(i) === '\n') {
+                        typewriterElement.innerHTML += '<br>';
+                    }
+                    i++;
+                    setTimeout(typeWriter, speed);
+                } else {
+                    typewriterElement.classList.remove('typewriter');
+                }
+            }
+            
+            // Démarrer l'animation
+            typeWriter();
+        });
+    </script>
+</body>
+</html>
